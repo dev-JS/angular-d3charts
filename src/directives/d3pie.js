@@ -7,8 +7,8 @@ angular.module('de.devjs.angular.pie', [])
                 data: '='
             },
             link: function (scope, element, attrs) {
-                var width = 960,
-                    height = 500,
+                var width = attrs.width,
+                    height = attrs.height,
                     radius = Math.min(width, height) / 2;
 
                 var color = d3.scale.ordinal()
@@ -30,7 +30,6 @@ angular.module('de.devjs.angular.pie', [])
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-
                 scope.$watch('data', function () {
                     populate(scope.data);
                 });
@@ -44,7 +43,6 @@ angular.module('de.devjs.angular.pie', [])
                         .data(pie(data))
                         .enter().append("g")
                         .attr("class", "arc");
-
 
                     g.append("path")
                         .attr("d", arc)
@@ -61,7 +59,6 @@ angular.module('de.devjs.angular.pie', [])
                         .text(function (d) {
                             return d.data.name + ': ' + d.data.count;
                         });
-
                 }
             }
         }
