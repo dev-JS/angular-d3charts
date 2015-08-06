@@ -1,5 +1,5 @@
-angular.module('de.devjs.angular.pie', [])
-    .directive('emEditor', ['$timeout', '$http', '$compile', function ($timeout, $http, $compile) {
+angular.module('de.devjs.angular.d3pie', [])
+    .directive('d3pie', ['$timeout', '$http', '$compile', function ($timeout, $http, $compile) {
         return {
             restrict: 'E',
             template: '<div></div>',
