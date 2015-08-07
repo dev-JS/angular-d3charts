@@ -1,6 +1,15 @@
 body {
   font: 10px sans-serif;
 }
+
 .arc path {
   stroke: #fff;
+}
+
+.circle {
+  display: inline-block;
+}
+
+.chart {
+  display: inline-block;
 }

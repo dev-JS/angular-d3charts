@@ -1,11 +1,15 @@
-angular.module('de.devjs.angular.d3pie', [])
-    .directive('d3pie', ['$timeout', '$http', '$compile', function ($timeout, $http, $compile) {
+angular.module('de.devjs.angular.d3circle', [])
+    .directive('d3circle', ['$timeout', '$http', '$compile', function ($timeout, $http, $compile) {
         return {
             restrict: 'E',
             scope: {
                 data: '='
             },
             link: function (scope, element, attrs) {
+
+                //http://bl.ocks.org/mbostock/4063530
+                //commiter to classes circles
+
                 var width = attrs.width,
                     height = attrs.height,
                     radius = Math.min(width, height) / 2;
@@ -23,6 +27,7 @@ angular.module('de.devjs.angular.d3pie', [])
                         return d.count;
                     });
 
+                console.log(element);
                 var svg = d3.select(element[0]).append("svg")
                     .attr("width", width)
                     .attr("height", height)

@@ -9,11 +9,15 @@
 
     <script src="app.js"></script>
     <script src="../src/directives/d3pie.js"></script>
+    <script src="../src/directives/d3circle.js"></script>
 
     <link href="../dist/d3pie.min.css" rel="stylesheet">
 
 </head>
 <body ng-app="de.devjs.angular.d3pie.example" ng-controller="appController">
-<d3pie width="500" height="900" data="pieData"></d3pie>
+
+<d3pie class="chart" width="250" height="450" data="pieData"></d3pie>
+
+<d3circle class="circle" width="250" height="450" data="circleData"></d3circle>
 </body>
 </html>
