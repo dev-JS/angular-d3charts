@@ -14,5 +14,8 @@
     "tests"
 ],
     "dependencies": {
+        "angular": "^1.4.2",
+        "angular-sanitize": "^1.4.3",
+        "d3": "^3.5.6"
 }
 }
