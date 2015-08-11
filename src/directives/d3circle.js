@@ -25,7 +25,9 @@ angular.module('de.devjs.angular.d3circle', [])
                 d3.select(self.frameElement).style("height", diameter + "px");
 
                 scope.$watch('data', function () {
-                    populate(scope.data);
+                    if (scope.data) {
+                        populate(scope.data);
+                    }
                 });
 
                 function populate(root) {

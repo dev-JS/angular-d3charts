@@ -30,7 +30,9 @@ angular.module('de.devjs.angular.d3pie', [])
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
                 scope.$watch('data', function () {
-                    populate(scope.data);
+                    if (scope.data) {
+                        populate(scope.data);
+                    }
                 });
 
                 function populate(data) {
