@@ -7,7 +7,7 @@ angular.module('de.devjs.angular.d3circle', [])
             },
             link: function (scope, element, attrs) {
 
-                var diameter = attrs.diameter,
+                var diameter = attrs.diameter || 350,
                     format = d3.format(",d");
 
                 var pack = d3.layout.pack()
