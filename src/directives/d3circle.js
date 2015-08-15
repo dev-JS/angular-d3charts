@@ -1,5 +1,5 @@
 angular.module('de.devjs.angular.d3circle', [])
-    .directive('d3circle', ['$timeout', '$http', '$compile', function ($timeout, $http, $compile) {
+    .directive('d3circle', [function () {
         return {
             restrict: 'E',
             scope: {

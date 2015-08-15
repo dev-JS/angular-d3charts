@@ -1,5 +1,6 @@
 (function () {
-    angular.module('de.devjs.angular.d3pie.example', ['de.devjs.angular.d3pie', 'de.devjs.angular.d3circle'])
+    angular.module('de.devjs.angular.d3pie.example', ['de.devjs.angular.d3pie', 'de.devjs.angular.d3circle',
+        'de.devjs.angular.d3codeflower'])
         .controller('appController', ['$scope', '$interval', function ($scope, $interval) {
             $scope.pieData = [
                 {

@@ -2,17 +2,17 @@ body {
   font: 10px sans-serif;
 }
 
+text {
+  font: 10px sans-serif;
+}
 .arc path {
   stroke: #fff;
-}
-
-.circle {
-  display: inline-block;
 }
 
 .chart {
   display: inline-block;
 }
+
 
 circle {
   fill: rgb(31, 119, 180);
@@ -30,3 +30,21 @@ text {
   font: 10px sans-serif;
 }
 
+line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+code.node {
+  cursor: pointer;
+  stroke: #000;
+  stroke-width: .5px;
+}
+code.node.directory {
+  stroke: #9ecae1;
+  stroke-width: 2px;
+}
+code.node.collapsed {
+  stroke: #555;
+}

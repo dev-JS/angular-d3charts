@@ -1,5 +1,5 @@
 angular.module('de.devjs.angular.d3pie', [])
-    .directive('d3pie', ['$timeout', '$http', '$compile', function ($timeout, $http, $compile) {
+    .directive('d3pie', [function () {
         return {
             restrict: 'E',
             scope: {
@@ -30,11 +30,17 @@ angular.module('de.devjs.angular.d3pie', [])
                 });
 
                 function populate(data) {
-                    var parent = element.parent()[0];
-                    width = parent.clientWidth - 20;
-                    height = parent.clientHeight - 20;
-                    radius = Math.min(width, height) / 3;
+                    var width, height,
+                        parent = element.parent()[0];
+                    if (!attrs.diameter) {
+                        width = parent.clientWidth - 20;
+                        height = parent.clientHeight - 20;
+                    } else {
+                        width = attrs.diameter;
+                        height = attrs.diameter;
+                    }
 
+                    radius = Math.min(width, height) / 3;
                     var d3Element = d3.select(element[0]);
 
                     d3Element
