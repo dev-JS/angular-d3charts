@@ -8,15 +8,17 @@
     <script src="../node_modules/d3/d3.min.js"></script>
 
     <script src="app.js"></script>
+    <script src="../src/directives/d3dependency.js"></script>
+    <script src="../src/directives/d3codeflower.js"></script>
     <script src="../src/directives/d3pie.js"></script>
     <script src="../src/directives/d3circle.js"></script>
-    <script src="../src/directives/d3codeflower.js"></script>
 
     <link href="../dist/d3charts.min.css" rel="stylesheet">
 
 </head>
 <body ng-app="de.devjs.angular.d3pie.example" ng-controller="appController">
 
+<d3dependency class="chart" diameter="450" data="dependency"></d3dependency>
 <d3codeflower class="chart" diameter="450" data="circleData"></d3codeflower>
 <d3pie class="chart" diameter="450" data="pieData"></d3pie>
 <d3circle class="circle" diameter="450" data="circleData"></d3circle>

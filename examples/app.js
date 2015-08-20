@@ -1,6 +1,6 @@
 (function () {
     angular.module('de.devjs.angular.d3pie.example', ['de.devjs.angular.d3pie', 'de.devjs.angular.d3circle',
-        'de.devjs.angular.d3codeflower'])
+        'de.devjs.angular.d3codeflower', 'de.devjs.angular.d3dependency'])
         .controller('appController', ['$scope', '$interval', function ($scope, $interval) {
             $scope.pieData = [
                 {
@@ -54,6 +54,14 @@
                             }
                         ]
                     }]
+            };
+            $scope.dependency = {
+                items: [
+                    {name: "London", color: "red"},
+                    {name: "Miami", color: "green"},
+                    {name: "Wuppertal", color: "blue"},
+                    {name: "Bochum", color: "orange"}],
+                matrix: [[0, 2, 3, 2], [1, 0, 2, 1], [1, 1,0, 1], [1, 1, 1, 0]]
             };
         }]);
 })();
