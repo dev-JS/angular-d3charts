@@ -57,11 +57,11 @@
             };
             $scope.dependency = {
                 items: [
-                    {name: "London", color: "red"},
-                    {name: "Miami", color: "green"},
-                    {name: "Wuppertal", color: "blue"},
-                    {name: "Bochum", color: "orange"}],
-                matrix: [[0, 2, 3, 2], [1, 0, 2, 1], [1, 1,0, 1], [1, 1, 1, 0]]
+                    {name: "London"},
+                    {name: "Miami"},
+                    {name: "Wuppertal"},
+                    {name: "Bochum"}],
+                matrix: [[1, 0, 0, 2], [0, 1, 2, 0], [0, 0, 1, 0], [2, 2, 0, 1]]
             };
         }]);
 })();

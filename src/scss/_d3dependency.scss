@@ -1,0 +1,37 @@
+//d3dependency
+d3dependency {
+  .group path {
+    fill-opacity: .5;
+    stroke-width: .25px;
+    fill: grey;
+  }
+
+  #circle:hover path.fade {
+    display: none;
+  }
+
+  #circle path.cycle {
+    stroke: red;
+    stroke-width: 2.25px;
+    $x: 100;
+    @for $i from 1 through $x {
+      &:nth-child(#{$i}) {
+        fill: hsla(360, 70%, 70%, 1) !important;
+      }
+    }
+  }
+
+  #circle path.chord {
+    stroke: #000;
+    stroke-width: .25px;
+
+    $x: 100;
+    // hsv model
+    @for $i from 1 through $x {
+      &:nth-child(#{$i}) {
+        fill: hsla(0 +  100 * $i, 100%, 85%, 1) !important;
+      }
+    }
+  }
+
+}

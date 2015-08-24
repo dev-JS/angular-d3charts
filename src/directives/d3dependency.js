@@ -71,10 +71,7 @@ angular.module('de.devjs.angular.d3dependency', [])
                         .attr("id", function (d, i) {
                             return "group" + i;
                         })
-                        .attr("d", arc)
-                        .style("fill", function (d, i) {
-                            return items[i].color;
-                        });
+                        .attr("d", arc);
 
                     // Add a text label.
                     var groupText = group.append("text")
@@ -99,11 +96,13 @@ angular.module('de.devjs.angular.d3dependency', [])
                     var chord = svg.selectAll(".chord")
                         .data(layout.chords)
                         .enter().append("path")
-                        .attr("class", "chord")
-                        .style("fill", function (d) {
-                            return items[d.source.index].color;
-                        })
-                        .attr("d", path);
+                        .attr("d", path)
+                        .attr("class", function (d) {
+                            if(d.source !== d.target
+                                && d.source.value > 0 && d.target.value > 0)
+                                return " cycle";
+                            else return " chord";
+                        });
 
                     // Add an elaborate mouseover title for each chord.
                     chord.append("title").text(function (d) {
