@@ -63,7 +63,7 @@ angular.module('de.devjs.angular.d3dependency', [])
 
                     // Add a mouseover title.
                     group.append("title").text(function (d, i) {
-                        return items[i].name + ": " + formatPercent(d.value) + " of origins";
+                        return items[i].name + " --> " + (d.value);
                     });
 
                     // Add the group arc.
@@ -98,7 +98,7 @@ angular.module('de.devjs.angular.d3dependency', [])
                         .enter().append("path")
                         .attr("d", path)
                         .attr("class", function (d) {
-                            if(d.source !== d.target
+                            if (d.source !== d.target
                                 && d.source.value > 0 && d.target.value > 0)
                                 return " cycle";
                             else return " chord";
@@ -106,12 +106,18 @@ angular.module('de.devjs.angular.d3dependency', [])
 
                     // Add an elaborate mouseover title for each chord.
                     chord.append("title").text(function (d) {
-                        return items[d.source.index].name
-                            + " ? " + items[d.target.index].name
-                            + ": " + formatPercent(d.source.value)
-                            + "\n" + items[d.target.index].name
-                            + " ? " + items[d.source.index].name
-                            + ": " + formatPercent(d.target.value);
+                        var label = items[d.source.index].name
+                            + " --> " + items[d.target.index].name
+                            + "(" + d.source.value + ")";
+
+                        if (d.source !== d.target
+                            && d.source.value > 0 && d.target.value > 0) {
+                            label += "\n"
+                            + items[d.target.index].name
+                            + " --> " + items[d.source.index].name
+                            + "(" + d.target.value + ")";
+                        }
+                        return label;
                     });
 
                     function mouseover(d, i) {
