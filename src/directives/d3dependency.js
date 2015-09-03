@@ -27,7 +27,7 @@ angular.module('de.devjs.angular.d3dependency', [])
                     var outerRadius = Math.min(width, height) / 2 - 10,
                         innerRadius = outerRadius - 24;
 
-                    var formatPercent = d3.format(".1%");
+                    d3.select(element[0]).selectAll('svg').remove();
 
                     var arc = d3.svg.arc()
                         .innerRadius(innerRadius)
@@ -89,8 +89,7 @@ angular.module('de.devjs.angular.d3dependency', [])
                     // Remove the labels that don't fit. :(
                     groupText.filter(function (d, i) {
                         return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength();
-                    })
-                        .remove();
+                    }).remove();
 
                     // Add the chords.
                     var chord = svg.selectAll(".chord")
