@@ -41,7 +41,9 @@ angular.module('de.devjs.angular.d3dependency', [])
                     var path = d3.svg.chord()
                         .radius(innerRadius);
 
-                    var svg = d3.select(element[0]).append("svg")
+                    var svg = d3.select(element[0])
+                        .append("svg")
+                        .on("click", deselect)
                         .attr("width", width)
                         .attr("height", height)
                         .append("g")
@@ -112,12 +114,19 @@ angular.module('de.devjs.angular.d3dependency', [])
                         if (d.source !== d.target
                             && d.source.value > 0 && d.target.value > 0) {
                             label += "\n"
-                            + items[d.target.index].name
-                            + " --> " + items[d.source.index].name
-                            + "(" + d.target.value + ")";
+                                + items[d.target.index].name
+                                + " --> " + items[d.source.index].name
+                                + "(" + d.target.value + ")";
                         }
                         return label;
                     });
+
+
+                    function deselect(d, i) {
+                        chord.classed("fade", function (p) {
+                            return false;
+                        });
+                    }
 
                     function mouseover(d, i) {
                         chord.classed("fade", function (p) {
