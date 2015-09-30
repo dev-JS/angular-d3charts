@@ -83,7 +83,7 @@ angular.module('de.devjs.angular.d3pie', [])
                         })
                         .style("text-anchor", "middle")
                         .text(function (d) {
-                            return d.data.name + ': ' + d.data.count + '%';
+                            return d.data.name + ': ' + d.data.count;
                         });
                 }
             }
