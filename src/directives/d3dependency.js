@@ -5,17 +5,69 @@ angular.module('de.devjs.angular.d3dependency', [])
             scope: {
                 data: '='
             },
+            templateUrl: '/src/views/dependency.html',
             link: function (scope, element, attrs) {
 
+                scope.update = function () {
+                    populate(filterByDependencies(scope.data));
+                }
+
+                //slider should filter and repopulate
                 scope.$watch('data', function () {
                     if (scope.data) {
-                        populate(scope.data.items, scope.data.matrix);
+                        populate(filterByDependencies(scope.data));
                     }
                 });
 
-                function populate(items, matrix) {
+                function filterByDependencies(data) {
+                    var actual = angular.copy(data);
+                    var mapping = sumDependencies(actual.matrix);
+                    mapping
+                        .filter(function (m) {
+                            return m.sum <= actual.min
+                        })
+                        .map(function (m) {
+                            return m.index;
+                        })
+                        .reverse()
+                        .forEach(function (m) {
+                            actual.matrix.forEach(function (item) {
+                                item.splice(m, 1)
+                            });
+                            actual.matrix.splice(m, 1);
+                            actual.items.splice(m, 1);
+                        });
+                    return actual;
+
+
+                    function sumDependencies(matrix) {
+                        var result = [];
+                        matrix.forEach(function (row, i) {
+                            var sumX = row.reduce(function (a, b) {
+                                return a + b;
+                            });
+
+                            var sumY = matrix.reduce(function (a, b) {
+                                return a + b[i];
+                            }, 0);
+
+                            result.push({index: i, sum: sumX + sumY});
+                        });
+
+                        return result;
+                    }
+                }
+
+                function populate(data) {
                     var width, height,
-                        parent = element.parent()[0];
+                        parent = element.parent()[0],
+                        items = data.items,
+                        matrix = data.matrix;
+
+                    if(data.items.length <= 0){
+                        return;
+                    }
+
                     if (!attrs.diameter) {
                         width = parent.clientWidth - 20;
                         height = parent.clientHeight - 20;
